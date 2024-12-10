@@ -3,20 +3,16 @@ with open("ADVENTOFCODE/advent9/input.txt") as f:
 
 # Create list of id numbers
 id = []
+idCount = -1
 for i, item in enumerate(input):
     if i % 2 == 0:
         id.extend([int(i) // 2] * int(item))
+        idCount += 1
     else:
         id.extend(['.'] * int(item))
 
 # Compact id list
-for i in range(len(id) - 1):
-    if id[i] == '.':
-        for j in range(len(id) - 1, i, -1):
-            if id[j] != '.':
-                id[i] = id[j]
-                id[j] = '.'
-                break
+
 
 # Calculate checksum
 checkSum = 0
